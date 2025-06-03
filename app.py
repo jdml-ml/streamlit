@@ -9,19 +9,37 @@ numeric_cols = df.select_dtypes(include='number').columns
 
 def main():
     st.title("Curso de Streamlit")
-    st.header("Dataframe:")
-    st.dataframe(df)
-    # st.dataframe(df.style.highlight_min(axis=0, subset=numeric_cols))
-    # st.text(df.dtypes)
-    # st.dataframe(df.style.highlight_max(axis=0)) # máx filas 262144
-    # st.table(df) #solo para tablas pequeñas
-    st.json({"clave": "valor"}) #formato JSON
-    ### Visualizar código python
-    codigo = """
-                def saludar():
-                    print("Hola")
-            """
-    st.code(codigo, language="python")
+    #SelectBox
+    opcion = st.selectbox(
+        'Elige una opción',
+        ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4']
+    )
+    st.write(f"Tu opción es {opcion}")
+
+    #Multiselect
+    opciones = st.multiselect(
+        'Selecciona tus colores favoritos',
+        ['Rojo', 'Verde', 'Azul', 'Amarillo', 'Negro', 'Blanco']
+    )
+    st.write('Tus colores favoritos son:', opciones)
+
+    #Slider (para números)
+    edad = st.slider(
+        'Selecciona tu edad',
+        min_value=0,
+        max_value=100,
+        value=25, #Valor inicial
+        step=1
+    )
+    st.write('Tu edad es', edad)
+
+    #Select Slider (para categorias)
+    nivel = st.select_slider(
+        'Selecciona tu nivel de satisfacción',
+        options=['Muy bajo', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+        value="Medio"
+    )
+    st.write(f'Tu nivel de satisfacción es: {nivel}')
     
 
 if __name__ == '__main__':
