@@ -1,10 +1,13 @@
 import streamlit as st
+import pandas as pd
+
+df = pd.read_csv("covid_data.csv")
 
 def main():
     st.title("Curso de Streamlit")
-    st.write("Texto")
-    st.write("## Esto es un markdown")
-    st.write(1+2)
+    st.header("Dataframe:")
+    st.dataframe(df)
+    
 
 if __name__ == '__main__':
     main()
