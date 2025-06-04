@@ -1,45 +1,20 @@
 import streamlit as st
 import pandas as pd
-
-df = pd.read_csv("covid_data.csv")
-# df2 = df.sample(n=1000, random_state=42)
-numeric_cols = df.select_dtypes(include='number').columns
-
-# st.dataframe(df2.style.highlight_max(axis=0)) # máx filas 262144
+from PIL import Image
 
 def main():
     st.title("Curso de Streamlit")
-    #SelectBox
-    opcion = st.selectbox(
-        'Elige una opción',
-        ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4']
-    )
-    st.write(f"Tu opción es {opcion}")
+    img = Image.open("Julia.png")
+    st.image(img, use_container_width=True)
+    st.write("Tomada de: PantheraLeo1359531, CC0, via Wikimedia Commons")
+    # Imagen aleatoria de internet
+    st.image("https://picsum.photos/1920")
 
-    #Multiselect
-    opciones = st.multiselect(
-        'Selecciona tus colores favoritos',
-        ['Rojo', 'Verde', 'Azul', 'Amarillo', 'Negro', 'Blanco']
-    )
-    st.write('Tus colores favoritos son:', opciones)
+    # with open("tu_video.mp4", 'rb') as video_file:
+    #     st.video(video_file.read(), start_time=0)
 
-    #Slider (para números)
-    edad = st.slider(
-        'Selecciona tu edad',
-        min_value=0,
-        max_value=100,
-        value=25, #Valor inicial
-        step=1
-    )
-    st.write('Tu edad es', edad)
-
-    #Select Slider (para categorias)
-    nivel = st.select_slider(
-        'Selecciona tu nivel de satisfacción',
-        options=['Muy bajo', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-        value="Medio"
-    )
-    st.write(f'Tu nivel de satisfacción es: {nivel}')
+    # with open("tu_audio.mp3", 'rb') as audio_file:
+    #     st.audio(audio_file.read(), start_time=0)
     
 
 if __name__ == '__main__':
